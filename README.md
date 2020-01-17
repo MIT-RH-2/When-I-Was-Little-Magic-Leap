@@ -1,2 +1,3 @@
-# The-Fourth-Illusion-Magic-Leap
-A VR/AR exploration on memory and disinformation. MAGIC LEAP VERSION.
+# The-Fourth-Illusion
+
+A VR/AR exploration on memory and disinformation. QUEST VERSION.
