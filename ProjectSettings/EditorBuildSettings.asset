@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/HelloCube.unity
     guid: 4487f193e13754582a28cdcf32ec620d
+  - enabled: 1
+    path: Assets/ClassRoomAssets/MoveClassTest.unity
+    guid: eaa35e97d537e46ecb1dd644cef1cfe6
   m_configObjects:
     com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: 660c932c8f764b0438211bd5b4fd0849,
       type: 2}
