@@ -12,6 +12,7 @@ namespace MagicLeapTools
 {
     [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(InputReceiver))]
+
     public class InputFeedback : MonoBehaviour
     {
 #if PLATFORM_LUMIN
@@ -20,12 +21,13 @@ namespace MagicLeapTools
         public Color targetedColor = Color.gray;
         public Color selectedColor = Color.green;
         public Color draggedColor = Color.magenta;
-        public AudioClip targetBeginSound;
-        public AudioClip targetEndSound;
-        public AudioClip selectedSound;
-        public AudioClip dragStartSound;
-        public AudioClip dragStopSound;
-        public AudioClip collisionSound;
+       
+        private AudioClip targetBeginSound;
+        private AudioClip targetEndSound;
+        private AudioClip selectedSound;
+        private AudioClip dragStartSound;
+        private AudioClip dragStopSound;
+        private AudioClip collisionSound;  
 
         //Private Variables:
         private InputReceiver _inputReceiver;
