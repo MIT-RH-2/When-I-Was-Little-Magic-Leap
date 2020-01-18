@@ -15,6 +15,10 @@ public class DebugScript : MonoBehaviour
     	Debug.Log("Script Fired Test"); 
     }
 
+     public void Hit() {
+        Debug.Log("ITEM WAS HIT! "); 
+    }
+
     // Update is called once per frame
     void Update()
     {
