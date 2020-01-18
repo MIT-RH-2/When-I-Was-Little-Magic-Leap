@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/HelloCube.unity
-    guid: 4487f193e13754582a28cdcf32ec620d
   - enabled: 1
     path: Assets/ClassRoomAssets/MoveClassTest.unity
     guid: eaa35e97d537e46ecb1dd644cef1cfe6
