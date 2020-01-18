@@ -197,7 +197,7 @@ public class BrushDrawFromHere : MonoBehaviour {
                     //Debug.Log("The Y Axis has Moved");
                     //_brushPos.GetComponent<MeshRenderer>().enabled = true;
                     _brushPos.localPosition = new Vector3(_brushPos.localPosition.x, _brushPos.localPosition.y, _brushPos.localPosition.z - (Input.GetAxisRaw(axisY) * _speed));
-                    VibrateControllers(.1f, .1sf, .15f);
+                    VibrateControllers(.1f, .1f, .15f);
                 }
                 if (axisYMoved && _brushPos.localPosition.z <= 0.05f)
                 {
