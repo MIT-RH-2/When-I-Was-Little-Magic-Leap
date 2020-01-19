@@ -192,6 +192,7 @@ public class BrushDrawFromHere : MonoBehaviour {
                 {
                     ColorSync cs = FindObjectOfType<ColorSync>();
                     cs.TransferObject();
+                    Debug.Log("I tried to sync color");
                 }
 
                     // If we lose tracking, stop drawing

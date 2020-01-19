@@ -47,6 +47,7 @@ public class ColorSync : RealtimeComponent {
         #if !UNITY_LUMIN
             if(_model.isVisible){
                 GetComponent<RealtimeTransform>().RequestOwnership();
+                Debug.Log("ownership transferred");
             }
         #endif
         UpdateMeshRendererVisibility();
@@ -62,6 +63,7 @@ public class ColorSync : RealtimeComponent {
         bool shouldObjectBeVisible = _model.isVisible;
         #if UNITY_LUMIN
             shouldObjectBeVisible = true;
+            Debug.Log("Lumin");
         #endif
         Debug.Log("Is model visible: " + shouldObjectBeVisible);
         _meshRenderer.enabled = shouldObjectBeVisible;
@@ -81,6 +83,7 @@ public class ColorSync : RealtimeComponent {
 
     public void TransferObject(){
         _model.isVisible = true;
+        Debug.Log("transfer complete");
     }
 
     public void DragAndDrop(){
