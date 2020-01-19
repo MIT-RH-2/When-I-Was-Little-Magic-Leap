@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Normal.Realtime;
-using UnityEngine.XR.MagicLeap;
 
 public class ColorSync : RealtimeComponent {
     [SerializeField]

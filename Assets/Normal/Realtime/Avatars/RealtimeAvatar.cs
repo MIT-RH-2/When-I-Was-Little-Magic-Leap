@@ -118,7 +118,7 @@ namespace Normal.Realtime {
 
             //   if (_head != null)      _head.gameObject.SetActive(model.headActive); // I deprecated this because it will cause RealtimeAvatarVoice to not run when the head isn't tracking...
             if ( _leftHand != null)  _leftHand.gameObject.SetActive(model.leftHandActive);
-            ///if (_rightHand != null) _rightHand.gameObject.SetActive(model.rightHandActive);
+            if (_rightHand != null) _rightHand.gameObject.SetActive(model.rightHandActive);
         }
 
         void UpdateAvatarTransformsForLocalPlayer() {
