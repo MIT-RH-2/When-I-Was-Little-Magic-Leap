@@ -7045,7 +7045,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _localAvatarPrefab
       value: 
-      objectReference: {fileID: 2777002244915110729, guid: 1b00cf3d3de8b45e9bb6d13bec5e7dea,
+      objectReference: {fileID: 4356156100029527365, guid: 1b00cf3d3de8b45e9bb6d13bec5e7dea,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fca9d4afb3743274e8f7da14019d7e0b, type: 3}
