@@ -37,4 +37,9 @@ public class Player : MonoBehaviour
             hand.SetActive(true);
         }
     }
+
+    public void HandFixy() {
+        hand.SetActive(true);
+    }
+    
 }

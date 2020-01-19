@@ -4901,7 +4901,7 @@ MonoBehaviour:
       cameraNormal: {x: 0, y: 0, z: 0}
       cameraCenter: {x: 0, y: 0, z: 0}
   _depthBrightnessThreshold: 0.057
-  _internalEdgeCutoffAngle: 0.535
+  _internalEdgeCutoffAngle: 0.633
   _shader: {fileID: 4800000, guid: 31885f46431bd486a9beebd72f2b8fa8, type: 3}
 --- !u!114 &723305987
 MonoBehaviour:
@@ -4918,7 +4918,7 @@ MonoBehaviour:
   _player: {fileID: 723305985}
   _renderer: {fileID: 723305986}
   _depthLuminanceFilter: 0.057
-  _internalEdgeCutoffAngle: 0.535
+  _internalEdgeCutoffAngle: 0.633
   _collider: {fileID: 723305988}
   _playerType: 4
   _renderType: 0
@@ -6618,6 +6618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bdfh: []
+  player: {fileID: 0}
 --- !u!4 &996520833
 Transform:
   m_ObjectHideFlags: 0
@@ -9503,6 +9504,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 996520832}
+          m_MethodName: HandFix
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 996520834}
@@ -11374,7 +11386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027053916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 12, z: 5.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 336993994}
