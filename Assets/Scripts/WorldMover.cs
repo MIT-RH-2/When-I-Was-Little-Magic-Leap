@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WorldMover : MonoBehaviour
 {
-    public bool isFirstClick;
+    //public bool isFirstClick;
 
     public bool setUp;
 
@@ -33,28 +33,35 @@ public class WorldMover : MonoBehaviour
         
     }
 
+    public void  ToggleSetup()
+    {
+        setUp = !setUp;
+    }
+
     public void FirstClick()
     {
         //isFirstClick = !isFirstClick;
 
-        //if (isFirstClick)
-        //{
-
+        if (setUp)
+        {
             startPt.transform.position = this.gameObject.transform.position;
             controllerStart = this.gameObject.transform.position;
 
-            setUp = true;
+            //setUp = true;
             //didOnceTrig = true;
-        //}
+        }
     }
 
     public void SecondClick()
     {
-        endPt.transform.position = this.gameObject.transform.position;
-        controllerEnd = this.gameObject.transform.position;
-        _player.transform.position += controllerStart - controllerEnd;
-
-        setUp = false;
+        if (setUp)
+        {
+            endPt.transform.position = this.gameObject.transform.position;
+            controllerEnd = this.gameObject.transform.position;
+            _player.transform.position += controllerStart - controllerEnd;
+        //setUp = false;
+        }
+        
         //didOnceTrig = false;
 
         //endPt.SetActive(false);

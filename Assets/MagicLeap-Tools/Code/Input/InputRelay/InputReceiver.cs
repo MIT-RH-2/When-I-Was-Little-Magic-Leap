@@ -59,7 +59,8 @@ namespace MagicLeapTools
         }
 
         //Private Variables:
-        protected Transform _mainCamera;
+        //protected Transform _mainCamera;
+        public Transform _mainCamera;
         protected Collider _collider;
         private Button _button;
 
@@ -74,7 +75,7 @@ namespace MagicLeapTools
         {
             //refs:
             _button = GetComponent<Button>();
-            _mainCamera = Camera.main.transform;
+
             _collider = GetComponent<Collider>();
 
             AwakeInherited();
@@ -87,6 +88,11 @@ namespace MagicLeapTools
             TargetedBy = new List<GameObject>();
             SelectedBy = new List<GameObject>();
             DraggedBy = new List<GameObject>();
+
+            if (Camera.main.transform != null)
+            {
+                _mainCamera = Camera.main.transform;
+            }
 
             OnEnableInherited();
         }

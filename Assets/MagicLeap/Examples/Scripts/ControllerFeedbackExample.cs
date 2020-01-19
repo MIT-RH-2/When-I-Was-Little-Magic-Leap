@@ -23,7 +23,7 @@ namespace MagicLeap
     [RequireComponent(typeof(ControllerConnectionHandler))]
     public class ControllerFeedbackExample : MonoBehaviour
     {            
-        public ColorSync cs;
+        //public ColorSync cs;
 
         #region Private Variables
         private ControllerConnectionHandler _controllerConnectionHandler;
@@ -50,7 +50,7 @@ namespace MagicLeap
         void Start()
         {
             _controllerConnectionHandler = GetComponent<ControllerConnectionHandler>();
-            cs = FindObjectOfType<ColorSync>();
+            //cs = FindObjectOfType<ColorSync>();
             MLInput.OnControllerButtonUp += HandleOnButtonUp;
             MLInput.OnControllerButtonDown += HandleOnButtonDown;
             MLInput.OnTriggerDown += HandleOnTriggerDown;
@@ -161,8 +161,8 @@ namespace MagicLeap
             if (controller != null && controller.Id == controllerId)
             {
 
-                 cs.TransferObject();
-                 Debug.Log("I tried to sync color");
+                 //cs.TransferObject();
+                 //Debug.Log("I tried to sync color");
 
                 MLInputControllerFeedbackIntensity intensity = (MLInputControllerFeedbackIntensity)((int)(value * 2.0f));
                 controller.StartFeedbackPatternVibe(MLInputControllerFeedbackPatternVibe.Buzz, intensity);
