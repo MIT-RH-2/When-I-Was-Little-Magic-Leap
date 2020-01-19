@@ -16,9 +16,15 @@ public class PointerGetObj : MonoBehaviour
         MagicLeapTools.Pointer pointer = gameObject.GetComponent<MagicLeapTools.Pointer>(); 
         if (pointer.Target != null)  {
             Debug.Log("got game object" ); 
+            Debug.Log("got game object" + pointer.Target.tag); 
         } else {
             Debug.Log("NA"); 
         }
         
     }
+
+
+
+
+
 }
