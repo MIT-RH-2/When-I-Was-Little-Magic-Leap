@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.XR;
 using Normal.Realtime;
+using UnityEngine.XR.MagicLeap;
 
 
 public class BrushDrawFromHere : MonoBehaviour {
@@ -35,6 +36,10 @@ public class BrushDrawFromHere : MonoBehaviour {
     public bool didOnceY;
     public bool didOnceTrig;
 
+    private bool _enabled = true;
+    public bool _bumper = false;
+    public bool _trigger = false;
+
     private bool vibration;
     private float vibTime;
 
@@ -49,6 +54,8 @@ public class BrushDrawFromHere : MonoBehaviour {
     public GameObject startPt;
     public GameObject endPt;
 
+    private MLInputController _controller;
+
     private void Start()
     {
         _realtime = GameObject.FindObjectOfType<Realtime>();
@@ -57,7 +64,20 @@ public class BrushDrawFromHere : MonoBehaviour {
         //_realtime.clientID;
         _player = this.gameObject.transform.root;
         _controlObject = GameObject.FindGameObjectWithTag("env").transform;
+        //Player = GameObject.FindGameObjectWithTag("Player");
+        //laser.SetActive(false);
+        //InputTracking.Recenter();
+
+        MLInput.Start();
+       //MLInput.OnControllerButtonDown += OnButtonDown;
+        //MLInput.OnControllerButtonUp += OnButtonUp;
+
         Swap();
+
+        if (_realtime.clientID == _rt.ownerID)
+        {
+            _controller = MLInput.GetController(MLInput.Hand.Left);
+        }
 
         startPt = GameObject.FindGameObjectWithTag("startPt");
         endPt = GameObject.FindGameObjectWithTag("endPt");
@@ -126,33 +146,44 @@ public class BrushDrawFromHere : MonoBehaviour {
 
         if (_realtime.clientID == _rt.ownerID)
         {
-            // Start by figuring out which hand we're tracking
+#if !PLATFORM_LUMIN
             XRNode node = _hand == Hand.LeftHand ? XRNode.LeftHand : XRNode.RightHand;
             string trigger = _hand == Hand.LeftHand ? "Left Trigger" : "Right Trigger";
             string joyclick = _hand == Hand.LeftHand ? "Left Joyclick" : "Right Joyclick";
             string axisY = _hand == Hand.LeftHand ? "Left AxisY" : "Right AxisY";
             string axisX = _hand == Hand.LeftHand ? "Left AxisX" : "Right AxisX";
+#endif
 
-            // Get the position & rotation of the hand
-            bool handIsTracking = true; _handPosition = transform.position; _handRotation = transform.rotation;
+
+#if PLATFORM_LUMIN
+            //string trigger = "Right Trigger";
+            //string joyclick = "Right Joyclick";
+            //string axisY = "Right AxisY";
+            //string axisX = "Right AxisX";
+            bool triggerPressed = _controller.TriggerValue > 0.2f;
+#endif     // Get the position & rotation of the hand
+            ///bool handIsTracking = true; _handPosition = transform.position; _handRotation = transform.rotation;
 
             // Figure out if the trigger is pressed or not
-            bool triggerPressed = Input.GetAxisRaw(trigger) > 0.1f;
-            //bool triggerReleased = Input.GetAxisRaw(trigger) < 0.1f;
+
 
             //Figure out if the joystick is clicked or not
-            bool joyclickPressed = Input.GetButtonDown(joyclick);
+            ///bool joyclickPressed = _controller.OnButtonDown(;
 
             // Figure out if the joystick / touchpad is pressed or not
-            bool axisYMoved = Input.GetAxisRaw(axisY) < -0.2f || Input.GetAxisRaw(axisY) > 0.2f;
-            //Debug.Log(Input.GetAxisRaw(axisY));
-            bool axisXMoved = Input.GetAxisRaw(axisX) < -0.2f || Input.GetAxisRaw(axisX) > 0.2f;
+            //bool axisYMoved = _controller.TouchpadGesture.Distance > 0.3f && (_controller.TouchpadGesture.Direction == MLInputControllerTouchpadGestureDirection.Up || _controller.TouchpadGesture.Direction == MLInputControllerTouchpadGestureDirection.Down);
+            bool axisYMoved = _controller.Touch1PosAndForce.z > 0.0f && Mathf.Abs(_controller.Touch1PosAndForce.y) > 0.2f;
+            bool axisXMoved = _controller.Touch1PosAndForce.z > 0.0f && Mathf.Abs(_controller.Touch1PosAndForce.x) > 0.2f;
 
-            if (joyclickPressed)
+            //Debug.Log(Input.GetAxisRaw(axisY));
+            //bool axisXMoved = _controller.TouchpadGesture.Distance > 0.3f && (_controller.TouchpadGesture.Direction == MLInputControllerTouchpadGestureDirection.Left || _controller.TouchpadGesture.Direction == MLInputControllerTouchpadGestureDirection.Right);
+
+            /*
+            if (!axisYMoved)
             {
-                Debug.Log("You pressed the joystick!");
-                NextAction();
+                didOnceY = false;
             }
+            */
 
             if (!axisXMoved)
             {
@@ -275,32 +306,16 @@ public class BrushDrawFromHere : MonoBehaviour {
 
 
 
-            //actions if mask swapping
+            //actions if 
             if (action == 2)
             {
-                if (axisXMoved && Input.GetAxisRaw(axisX) > 0 && !didOnceX)
-                {
-                    didOnceX = true;
-                    VibrateControllers(.12f, .2f, .2f);
-                }
-                if (axisXMoved && Input.GetAxisRaw(axisX) < 0 && !didOnceX)
-                {
-                    didOnceX = true;
-                    VibrateControllers(.2f, .12f, .2f);
-                }
+
             }
 
-            //actions if stage swapping
+            //actions if 
             if (action == 3)
             {
-                if (axisXMoved && Input.GetAxisRaw(axisX) > 0 && !didOnceX)
-                {
-                    didOnceX = true;
-                }
-                if (axisXMoved && Input.GetAxisRaw(axisX) < 0 && !didOnceX)
-                {
-                    didOnceX = true;
-                }
+
             }
 
             //actions if just squeezing your hands
