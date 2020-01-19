@@ -38,13 +38,29 @@ public class BrushDrawFromHere : MonoBehaviour {
     private bool vibration;
     private float vibTime;
 
+    private Transform _controlObject;
+    private Transform _player;
+
+    public bool setUp;
+
+    public Vector3 controllerStart;
+    public Vector3 controllerEnd;
+
+    public GameObject startPt;
+    public GameObject endPt;
+
     private void Start()
     {
         _realtime = GameObject.FindObjectOfType<Realtime>();
         _rt = this.gameObject.GetComponent<RealtimeTransform>();
         //_rv.RequestOwnership();
         //_realtime.clientID;
+        _player = this.gameObject.transform.root;
+        _controlObject = GameObject.FindGameObjectWithTag("env").transform;
         Swap();
+
+        startPt = GameObject.FindGameObjectWithTag("startPt");
+        endPt = GameObject.FindGameObjectWithTag("endPt");
     }
 
     public void VibrateControllers(float frequency, float amplitude, float time)
@@ -155,21 +171,25 @@ public class BrushDrawFromHere : MonoBehaviour {
             //actions if moving stuff should be handled by GazeXR
             if (action == 1)
             {
-                // return; maybe still do TRIGGER stuff here at least!
                 if (triggerPressed && !didOnceTrig)
                 {
- 
+                    startPt.transform.position = this.gameObject.transform.position;
+                    controllerStart = this.gameObject.transform.position;
+
+                    setUp = true;
                     didOnceTrig = true;
+                    Debug.Log("ARE YOU CHANGING THE WORLD?");
                 }
 
-                if (triggerPressed && !didOnceTrig)
+                if (!triggerPressed && didOnceTrig)
                 {
+                    endPt.transform.position = this.gameObject.transform.position;
+                    controllerEnd = this.gameObject.transform.position;
+                    _player.transform.position += controllerStart - controllerEnd;
 
-                }
-
-                if (!triggerPressed)
-                {
+                    setUp = false;
                     didOnceTrig = false;
+                    Debug.Log("DID YOU CHANGE THE WORLD?");
                 }
             }
             
