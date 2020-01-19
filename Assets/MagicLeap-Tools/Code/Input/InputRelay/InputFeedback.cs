@@ -17,11 +17,22 @@ namespace MagicLeapTools
     {
 #if PLATFORM_LUMIN
         //Public Variables:
-        public Renderer targetRenderer;
+        
+
+
+         public Renderer targetRenderer;
+
+
+        /*
         public Color targetedColor = Color.gray;
         public Color selectedColor = Color.green;
-        public Color draggedColor = Color.magenta;
-       
+        public Color draggedColor = Color.magenta;  */
+
+        public Material targetedColor; 
+        public Material selectedColor; 
+        public Material draggedColor; 
+
+
         private AudioClip targetBeginSound;
         private AudioClip targetEndSound;
         private AudioClip selectedSound;
@@ -32,7 +43,8 @@ namespace MagicLeapTools
         //Private Variables:
         private InputReceiver _inputReceiver;
         private AudioSource _audioSource;
-        private Color _idleColor;
+        private Material _idleColor;
+
 
         //Init:
         private void Reset()
@@ -43,6 +55,12 @@ namespace MagicLeapTools
 
         private void Awake()
         {
+
+            Debug.Log("______MATERIAL TEST________ "); 
+          //  targetRenderer.sharedMaterial  = testOne;
+
+
+
             //refs:
             _audioSource = GetComponent<AudioSource>();
             _inputReceiver = GetComponent<InputReceiver>();
@@ -50,7 +68,7 @@ namespace MagicLeapTools
             //sets:
             if (targetRenderer != null)
             {
-                _idleColor = targetRenderer.material.color;
+                _idleColor = targetRenderer.material;
             }
         }
 
@@ -110,7 +128,7 @@ namespace MagicLeapTools
 
             if (targetRenderer != null)
             {
-                targetRenderer.material.color = targetedColor;
+                targetRenderer.material = targetedColor;
             }
 
             if (targetBeginSound != null)
@@ -128,7 +146,7 @@ namespace MagicLeapTools
 
             if (targetRenderer != null)
             {
-                targetRenderer.material.color = _idleColor;
+                targetRenderer.material = _idleColor;
             }
 
             if (targetEndSound != null)
@@ -146,7 +164,7 @@ namespace MagicLeapTools
 
             if (targetRenderer != null)
             {
-                targetRenderer.material.color = selectedColor;
+                targetRenderer.material = selectedColor;
             }
 
             if (selectedSound != null)
@@ -164,7 +182,7 @@ namespace MagicLeapTools
 
             if (targetRenderer != null)
             {
-                targetRenderer.material.color = targetedColor;
+                targetRenderer.material = targetedColor;
             }
         }
 
@@ -177,7 +195,7 @@ namespace MagicLeapTools
 
             if (targetRenderer != null)
             {
-                targetRenderer.material.color = draggedColor;
+                targetRenderer.material = draggedColor;
             }
 
             if (dragStartSound != null)
@@ -195,7 +213,7 @@ namespace MagicLeapTools
 
             if (targetRenderer != null)
             {
-                targetRenderer.material.color = selectedColor;
+                targetRenderer.material = selectedColor;
             }
 
             if (dragStopSound != null)
