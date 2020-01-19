@@ -9,6 +9,13 @@ TagManager:
   - wait
   - globe
   - desk
+  - backpack
+  - Notebook
+  - backpacktwo
+  - backpack3
+  - poster
+  - pickup
+  - actor
   layers:
   - Default
   - TransparentFX

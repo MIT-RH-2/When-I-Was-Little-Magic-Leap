@@ -576,6 +576,7 @@ PlayerSettings:
     19: DK_USING_AVPRO
     21: DK_USING_AVPRO
     25: DK_USING_AVPRO
+    28: UNITY_LUMIN
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
