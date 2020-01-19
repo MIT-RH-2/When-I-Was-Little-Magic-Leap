@@ -16,6 +16,8 @@ TagManager:
   - poster
   - pickup
   - actor
+  - startPt
+  - finalPt
   layers:
   - Default
   - TransparentFX

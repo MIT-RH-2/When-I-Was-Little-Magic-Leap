@@ -25,6 +25,8 @@ namespace MagicLeap
     {            
         //public ColorSync cs;
 
+        public SceneChanger sc;
+        
         #region Private Variables
         private ControllerConnectionHandler _controllerConnectionHandler;
 
@@ -54,6 +56,7 @@ namespace MagicLeap
             MLInput.OnControllerButtonUp += HandleOnButtonUp;
             MLInput.OnControllerButtonDown += HandleOnButtonDown;
             MLInput.OnTriggerDown += HandleOnTriggerDown;
+            sc = GameObject.FindObjectOfType<SceneChanger>();
         }
 
         /// <summary>
@@ -129,6 +132,7 @@ namespace MagicLeap
             if (controller != null && controller.Id == controllerId &&
                 button == MLInputControllerButton.Bumper)
             {
+                sc.Restart();
                 // Demonstrate haptics using callbacks.
                 controller.StartFeedbackPatternVibe(MLInputControllerFeedbackPatternVibe.ForceDown, MLInputControllerFeedbackIntensity.Medium);
             }
