@@ -9,6 +9,7 @@ TagManager:
   - wait
   - globe
   - desk
+  - backpack
   layers:
   - Default
   - TransparentFX
