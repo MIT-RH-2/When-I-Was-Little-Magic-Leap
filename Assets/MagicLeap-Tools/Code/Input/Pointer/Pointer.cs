@@ -84,7 +84,10 @@ namespace MagicLeapTools
         /// <summary>
         /// What is currently targeted.
         /// </summary>
-        public GameObject Target
+
+
+        
+        public  GameObject Target
         {
             get;
             private set;
