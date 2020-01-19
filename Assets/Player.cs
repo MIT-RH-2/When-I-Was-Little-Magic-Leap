@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private RealtimeTransform _rt;
     private WorldMover _wm;
     private MagicLeapTools.InputReceiver[] _ir;
+    public GameObject hand;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
         _rt = this.gameObject.GetComponent<RealtimeTransform>();
 
         _wm = GameObject.FindObjectOfType<WorldMover>();
+
+        this.gameObject.transform.position = new Vector3(0, 12f, 0);
 
         _ir = FindObjectsOfType<MagicLeapTools.InputReceiver>();
 
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
             {
                 i._mainCamera = GetComponentInChildren<Camera>().transform;
             }
+            hand.SetActive(true);
         }
     }
 }

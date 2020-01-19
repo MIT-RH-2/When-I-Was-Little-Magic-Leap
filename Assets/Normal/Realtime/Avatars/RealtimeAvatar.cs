@@ -193,7 +193,7 @@ namespace Normal.Realtime {
                         if (nodeState.TryGetRotation(out rotation))
                             _head.localRotation = rotation;
                     } else if (nodeState.nodeType == XRNode.LeftHand && updateLeftHandWithXRNode) {
-                        leftHandActive = nodeState.tracked;
+                        leftHandActive = true;//nodeState.tracked;
 
                         Vector3 position;
                         if (nodeState.TryGetPosition(out position))
@@ -203,7 +203,7 @@ namespace Normal.Realtime {
                         if (nodeState.TryGetRotation(out rotation))
                             _leftHand.localRotation = rotation;
                     } else if (nodeState.nodeType == XRNode.RightHand && updateRightHandWithXRNode) {
-                        rightHandActive = nodeState.tracked;
+                        rightHandActive = true;//nodeState.tracked;
 
                         Vector3 position;
                         if (nodeState.TryGetPosition(out position))

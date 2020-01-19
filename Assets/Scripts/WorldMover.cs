@@ -21,10 +21,10 @@ public class WorldMover : MonoBehaviour
     void Start()
     {
         //_player = this.gameObject.transform.root;
-        _controlObject = GameObject.FindGameObjectWithTag("env").transform;
+        //_controlObject = GameObject.FindGameObjectWithTag("env").transform;
 
         startPt = GameObject.FindGameObjectWithTag("startPt");
-        endPt = GameObject.FindGameObjectWithTag("endPt");
+        endPt = GameObject.FindGameObjectWithTag("finalPt");
     }
 
     // Update is called once per frame
