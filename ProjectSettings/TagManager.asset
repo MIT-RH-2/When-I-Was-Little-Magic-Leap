@@ -8,6 +8,8 @@ TagManager:
   - env
   - wait
   - globe
+  - startPt
+  - endPt
   layers:
   - Default
   - TransparentFX
